@@ -1,0 +1,96 @@
+﻿<Window x:Class="VentSayAnalitics.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow"
+        Width="1200"
+        Height="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="290" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />           
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="10" />
+            </Grid.RowDefinitions>
+            <Label Content="Выберите материал" />
+            <ListBox Name="ListBox"
+                     Grid.Row="1"
+                     SelectionChanged="ListBox_SelectionChanged" />
+
+        </Grid>
+
+
+
+        <Grid Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="10" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"                  
+                    Orientation="Horizontal">
+
+                <Label Name="NameMaterialLabel"
+                   Content="Название материала"
+                   FontWeight="Medium" />
+                <Label  Content="Остаток: " />
+                <Label Name="BalanceLabel" Content="x" FontWeight="Medium"></Label>
+                <Label Name="UnitLabel" Content="ед" ></Label>
+
+            </StackPanel>
+
+
+
+
+            <DataGrid Name="DebitDataGrid"
+                      Grid.Row="1"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Count}" Header="№" />
+                    <DataGridTextColumn Binding="{Binding Date}" Header="Дата" />
+                    <DataGridTextColumn Binding="{Binding DocumentNomber}" Header="Наряд" />
+                    <DataGridTextColumn Binding="{Binding DebitString}" Header="Кол-во" />
+                    <DataGridTextColumn Binding="{Binding PriceString}" Header="Цена" />
+                    <DataGridTextColumn Binding="{Binding CostString}" Header="Стоимость" />
+                    <DataGridTextColumn Binding="{Binding Provider}" Header="Поставщик" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid Grid.Column="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="10" />
+            </Grid.RowDefinitions>
+<Button Content="Закрыть" IsCancel="True" Click="Button_Click_1" ></Button>
+
+            <DataGrid Name="CreditDataGrid"
+                      Grid.Row="1"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Count}" Header="№" />
+                    <DataGridTextColumn Binding="{Binding Date}" Header="Дата" />
+                    <DataGridTextColumn Binding="{Binding DocumentNomber}" Header="Наряд" />
+                    <DataGridTextColumn Binding="{Binding DebitString}" Header="Кол-во" />
+                    <DataGridTextColumn Binding="{Binding PriceString}" Header="Цена" />
+                    <DataGridTextColumn Binding="{Binding CostString}" Header="Стоимость" />
+                    <DataGridTextColumn Binding="{Binding Provider}" Header="Поставщик" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+
+    </Grid>
+</Window>
